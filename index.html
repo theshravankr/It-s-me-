@@ -3,25 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shravan Kumar - Mechanical Engineer</title>
+    <title>Shravan Kumar | Mechanical Engineer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
-        /* Base Styles */
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --light-color: #ecf0f1;
-            --dark-color: #2c3e50;
-            --text-color: #333;
-            --text-light: #777;
+            --primary: #1a2b3c;
+            --secondary: #2d88ff;
+            --accent: #ff6b6b;
+            --light: #f8f9fa;
+            --dark: #121a24;
+            --gray: #6c757d;
+            --gradient: linear-gradient(135deg, #1a2b3c 0%, #2d88ff 100%);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         html {
@@ -29,9 +30,18 @@
         }
 
         body {
+            font-family: 'Poppins', sans-serif;
             line-height: 1.6;
-            color: var(--text-color);
-            background-color: #f9f9f9;
+            color: var(--primary);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
         }
 
         .container {
@@ -42,61 +52,82 @@
         }
 
         section {
-            padding: 80px 0;
-        }
-
-        h1, h2, h3, h4 {
-            margin-bottom: 15px;
-            color: var(--primary-color);
-        }
-
-        p {
-            margin-bottom: 15px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: var(--secondary-color);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .btn:hover {
-            background-color: #2980b9;
-            transform: translateY(-3px);
+            padding: 100px 0;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             position: relative;
         }
 
-        .section-title::after {
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            display: inline-block;
+            position: relative;
+        }
+
+        .section-title h2::after {
             content: '';
             position: absolute;
             bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
             width: 80px;
-            height: 3px;
-            background-color: var(--secondary-color);
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: var(--primary);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
 
         /* Header Styles */
         header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: fixed;
-            width: 100%;
             top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow);
             z-index: 1000;
+            transition: var(--transition);
         }
 
         .navbar {
@@ -107,14 +138,21 @@
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary-color);
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary);
             text-decoration: none;
+            display: flex;
+            align-items: center;
         }
 
         .logo span {
-            color: var(--secondary-color);
+            color: var(--secondary);
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 2rem;
         }
 
         .nav-links {
@@ -128,62 +166,113 @@
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-color);
+            color: var(--primary);
             font-weight: 500;
-            transition: color 0.3s;
+            transition: var(--transition);
+            position: relative;
         }
 
-        .nav-links a:hover {
-            color: var(--secondary-color);
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .hamburger {
             display: none;
             cursor: pointer;
-            font-size: 24px;
+            font-size: 1.5rem;
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
-            background-size: cover;
-            background-position: center;
+            background: var(--gradient);
             color: white;
-            text-align: center;
             padding: 180px 0 100px;
-            margin-top: 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L1000,0 L1000,1000 L0,1000 Z M0,0 Q500,200 1000,0 L1000,1000 L0,1000 Z"></path></svg>');
+            background-size: cover;
         }
 
         .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
         }
 
-        .hero h1 {
-            font-size: 3rem;
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
             margin-bottom: 20px;
             color: white;
         }
 
-        .hero p {
+        .hero-text p {
             font-size: 1.2rem;
             margin-bottom: 30px;
+            opacity: 0.9;
         }
 
         .hero-btns {
             display: flex;
-            justify-content: center;
             gap: 15px;
         }
 
         .btn-outline {
-            background-color: transparent;
+            background: transparent;
             border: 2px solid white;
         }
 
         .btn-outline:hover {
-            background-color: white;
-            color: var(--primary-color);
+            background: white;
+            color: var(--primary);
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-img {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 10px solid rgba(255, 255, 255, 0.2);
+            box-shadow: var(--shadow);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
         }
 
         /* About Section */
@@ -193,24 +282,14 @@
             gap: 50px;
         }
 
-        .about-img {
-            flex: 1;
-            text-align: center;
-        }
-
-        .about-img img {
-            width: 100%;
-            max-width: 400px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
         .about-text {
             flex: 1;
         }
 
         .about-text h3 {
-            color: var(--secondary-color);
+            color: var(--secondary);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
         }
 
         .education {
@@ -219,60 +298,133 @@
 
         .education-item {
             margin-bottom: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .education-item:hover {
+            transform: translateY(-5px);
         }
 
         .education-item h4 {
             margin-bottom: 5px;
+            color: var(--primary);
         }
 
         .education-item p {
-            color: var(--text-light);
+            color: var(--gray);
             margin-bottom: 5px;
+        }
+
+        .about-stats {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .stat-item {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-text {
+            color: var(--gray);
         }
 
         /* Skills Section */
         .skills {
-            background-color: var(--light-color);
+            background: var(--light);
         }
 
         .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .skill-item {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .skill-item:hover {
-            transform: translateY(-10px);
-        }
-
-        .skill-icon {
-            font-size: 40px;
-            color: var(--secondary-color);
-            margin-bottom: 15px;
-        }
-
-        /* Projects Section */
-        .projects-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
+        .skill-category {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-category h3 i {
+            margin-right: 10px;
+        }
+
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: var(--light);
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .skill-tag:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Projects Section */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
         .project-card {
-            background-color: white;
+            background: white;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
         }
 
         .project-card:hover {
@@ -281,22 +433,53 @@
 
         .project-img {
             height: 200px;
-            background-color: #ddd;
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(45deg, #1a2b3c, #2d88ff);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-img::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
         }
 
         .project-info {
-            padding: 20px;
+            padding: 25px;
         }
 
         .project-info h3 {
+            color: var(--primary);
             margin-bottom: 10px;
+        }
+
+        .project-info p {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .tech-tag {
+            background: var(--light);
+            padding: 5px 10px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--secondary);
         }
 
         /* Contact Section */
         .contact {
-            background-color: var(--light-color);
+            background: var(--light);
         }
 
         .contact-container {
@@ -311,24 +494,46 @@
         .contact-item {
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
         }
 
         .contact-icon {
-            width: 50px;
-            height: 50px;
-            background-color: var(--secondary-color);
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 15px;
-            font-size: 20px;
+            margin-right: 20px;
+            font-size: 1.5rem;
+        }
+
+        .contact-details h3 {
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+
+        .contact-details p {
+            color: var(--gray);
         }
 
         .contact-form {
             flex: 1;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
         }
 
         .form-group {
@@ -337,10 +542,17 @@
 
         .form-control {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
             border-radius: 5px;
-            font-size: 16px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--secondary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(45, 136, 255, 0.2);
         }
 
         textarea.form-control {
@@ -348,41 +560,69 @@
             resize: vertical;
         }
 
+        .map-container {
+            margin-top: 50px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 400px;
+        }
+
         /* Footer */
         footer {
-            background-color: var(--primary-color);
+            background: var(--dark);
             color: white;
-            padding: 30px 0;
-            text-align: center;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
         }
 
         .social-links {
             display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
+            gap: 15px;
         }
 
         .social-link {
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 10px;
             color: white;
             text-decoration: none;
-            transition: all 0.3s;
+            transition: var(--transition);
         }
 
         .social-link:hover {
-            background-color: var(--secondary-color);
+            background: var(--secondary);
             transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
         }
 
         /* Responsive Styles */
         @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            
+            .hero-text {
+                margin-top: 50px;
+            }
+            
             .about-content {
                 flex-direction: column;
             }
@@ -399,16 +639,17 @@
             
             .nav-links {
                 position: fixed;
-                top: 70px;
+                top: 80px;
                 left: -100%;
                 width: 100%;
-                height: calc(100vh - 70px);
-                background-color: white;
+                height: calc(100vh - 80px);
+                background: white;
                 flex-direction: column;
                 align-items: center;
                 justify-content: flex-start;
                 padding-top: 50px;
-                transition: left 0.3s;
+                transition: var(--transition);
+                box-shadow: var(--shadow);
             }
             
             .nav-links.active {
@@ -419,7 +660,7 @@
                 margin: 15px 0;
             }
             
-            .hero h1 {
+            .hero-text h1 {
                 font-size: 2.5rem;
             }
             
@@ -432,6 +673,10 @@
                 width: 100%;
                 max-width: 250px;
             }
+            
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -440,7 +685,7 @@
     <header>
         <div class="container">
             <nav class="navbar">
-                <a href="#" class="logo">Shravan<span>Kumar</span></a>
+                <a href="#" class="logo"><i class="fas fa-cogs"></i>Shravan<span>Kumar</span></a>
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
@@ -459,11 +704,16 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1>Shravan Kumar</h1>
-                <p>Mechanical Engineer | CAD Designer | Manufacturing Specialist</p>
-                <div class="hero-btns">
-                    <a href="#projects" class="btn">View Projects</a>
-                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                <div class="hero-text">
+                    <h1>Mechanical Engineer & CAD Designer</h1>
+                    <p>Specializing in CNC machining, 3D printing, and advanced manufacturing technologies. Transforming ideas into precision-engineered solutions.</p>
+                    <div class="hero-btns">
+                        <a href="#projects" class="btn">View Projects</a>
+                        <a href="#contact" class="btn btn-outline">Contact Me</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="shravan.jpg" alt="Shravan Kumar" class="profile-img">
                 </div>
             </div>
         </div>
@@ -472,14 +722,13 @@
     <!-- About Section -->
     <section class="about" id="about">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
             <div class="about-content">
-                <div class="about-img">
-                    <img src="./shravan.jpg" alt="Shravan Kumar">
-                </div>
                 <div class="about-text">
-                    <h3>Mechanical Engineering Professional</h3>
-                    <p>I am a dedicated Mechanical Engineer with expertise in CAD design, manufacturing processes, and engineering analysis. Currently pursuing my education at Centurion University of Technology and Management, Gajapati, Odisha.</p>
+                    <h3>Engineering Excellence</h3>
+                    <p>I am a passionate Mechanical Engineer with expertise in CAD design, manufacturing processes, and engineering analysis. Currently pursuing my education at Centurion University of Technology and Management, Gajapati, Odisha.</p>
                     
                     <div class="education">
                         <h3>Education</h3>
@@ -497,6 +746,36 @@
                         </div>
                     </div>
                 </div>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div class="stat-number">15+</div>
+                        <div class="stat-text">Projects Completed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-tools"></i>
+                            </div>
+                        <div class="stat-number">7</div>
+                        <div class="stat-text">Technical Skills</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div class="stat-number">3</div>
+                        <div class="stat-text">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-number">10+</div>
+                        <div class="stat-text">Happy Clients</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -504,56 +783,36 @@
     <!-- Skills Section -->
     <section class="skills" id="skills">
         <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
+            <div class="section-title">
+                <h2>Technical Skills</h2>
+            </div>
             <div class="skills-container">
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fas fa-cogs"></i>
+                <div class="skill-category">
+                    <h3><i class="fas fa-industry"></i> Manufacturing</h3>
+                    <div class="skill-items">
+                        <div class="skill-tag">CNC Machining</div>
+                        <div class="skill-tag">LATHE Operations</div>
+                        <div class="skill-tag">EDM</div>
+                        <div class="skill-tag">3D Printing</div>
                     </div>
-                    <h3>CNC Machining</h3>
-                    <p>Expertise in Computer Numerical Control machining operations and programming.</p>
                 </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fas fa-tools"></i>
+                <div class="skill-category">
+                    <h3><i class="fas fa-desktop"></i> Design & Simulation</h3>
+                    <div class="skill-items">
+                        <div class="skill-tag">CATIA</div>
+                        <div class="skill-tag">3D Experience</div>
+                        <div class="skill-tag">ANSYS</div>
+                        <div class="skill-tag">SolidWorks</div>
                     </div>
-                    <h3>LATHE Operations</h3>
-                    <p>Proficient in lathe machine operations for precision turning and facing.</p>
                 </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fas fa-bolt"></i>
+                <div class="skill-category">
+                    <h3><i class="fas fa-toolbox"></i> Engineering Tools</h3>
+                    <div class="skill-items">
+                        <div class="skill-tag">GD&T</div>
+                        <div class="skill-tag">FEA Analysis</div>
+                        <div class="skill-tag">Prototyping</div>
+                        <div class="skill-tag">Quality Control</div>
                     </div>
-                    <h3>EDM</h3>
-                    <p>Skilled in Electrical Discharge Machining for complex shapes and hard materials.</p>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fas fa-print"></i>
-                    </div>
-                    <h3>3D Printing</h3>
-                    <p>Experience with additive manufacturing technologies and rapid prototyping.</p>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fas fa-cube"></i>
-                    </div>
-                    <h3>CATIA</h3>
-                    <p>Advanced proficiency in CATIA for 3D modeling and product design.</p>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fas fa-desktop"></i>
-                    </div>
-                    <h3>3D Experience</h3>
-                    <p>Knowledge of Dassault Systèmes' 3DEXPERIENCE platform for collaborative design.</p>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <h3>ANSYS</h3>
-                    <p>Skilled in finite element analysis and simulation using ANSYS software.</p>
                 </div>
             </div>
         </div>
@@ -562,20 +821,34 @@
     <!-- Projects Section -->
     <section class="projects" id="projects">
         <div class="container">
-            <h2 class="section-title">Projects</h2>
+            <div class="section-title">
+                <h2>My Projects</h2>
+            </div>
             <div class="projects-container">
                 <div class="project-card">
-                    <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25856cd63?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="project-img"></div>
                     <div class="project-info">
                         <h3>GoCart</h3>
                         <p>Designed and developed a functional go-kart with optimized chassis and steering system for improved performance and safety.</p>
+                        <div class="project-tech">
+                            <div class="tech-tag">CATIA</div>
+                            <div class="tech-tag">ANSYS</div>
+                            <div class="tech-tag">3D Printing</div>
+                        </div>
+                        <a href="#" class="btn">View Details</a>
                     </div>
                 </div>
                 <div class="project-card">
-                    <div class="project-img" style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="project-img"></div>
                     <div class="project-info">
-                        <h3>Power Hackshaw Cutter Machine</h3>
-                        <p>Engineered a power hackshaw cutter machine with enhanced cutting efficiency and safety features for industrial applications.</p>
+                        <h3>Power Hacksaw Machine</h3>
+                        <p>Engineered a power hacksaw machine with enhanced cutting efficiency and safety features for industrial applications.</p>
+                        <div class="project-tech">
+                            <div class="tech-tag">CAD Design</div>
+                            <div class="tech-tag">CNC Machining</div>
+                            <div class="tech-tag">Prototyping</div>
+                        </div>
+                        <a href="#" class="btn">View Details</a>
                     </div>
                 </div>
             </div>
@@ -585,14 +858,16 @@
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+            </div>
             <div class="contact-container">
                 <div class="contact-info">
                     <div class="contact-item">
                         <div class="contact-icon">
                             <i class="fas fa-phone"></i>
                         </div>
-                        <div>
+                        <div class="contact-details">
                             <h3>Phone</h3>
                             <p>+91 8207825310</p>
                         </div>
@@ -601,16 +876,25 @@
                         <div class="contact-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
-                        <div>
+                        <div class="contact-details">
                             <h3>Email</h3>
                             <p>shravankr123545@gmail.com</p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>LinkedIn</h3>
+                            <p>shravan-kumar-23695431b</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
-                        <div>
+                        <div class="contact-details">
                             <h3>Location</h3>
                             <p>Centurion University of Technology and Management, Gajapati, Odisha</p>
                         </div>
@@ -634,24 +918,29 @@
                     </form>
                 </div>
             </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3765.240663379761!2d84.03212217599624!3d19.32032414630337!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3d8b9b8b9b8b9b%3A0x3a3d8b9b8b9b8b9b!2sCenturion%20University%20of%20Technology%20and%20Management%2C%20Gajapati%2C%20Odisha!5e0!3m2!1sen!2sin!4v1690000000000!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="social-links">
-                <a href="https://www.linkedin.com/public-profile/settings" class="social-link">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="https://www.instagram.com/__.shravan.__" class="social-link">
-                    <i class="fab fa-instagram"></i>
-                </a>
+            <div class="footer-content">
+                <div class="logo">Shravan<span>Kumar</span></div>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/shravan-kumar-23695431" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/__.shravan.__" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
             </div>
-            <p>&copy; 2023 Shravan Kumar. All Rights Reserved.</p>
+            <div class="copyright">
+                <p>&copy; 2023 Shravan Kumar. All Rights Reserved.</p>
+            </div>
         </div>
     </footer>
-<script>
+
+    <script>
         // Mobile Navigation Toggle
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
@@ -667,10 +956,28 @@
             });
         });
         
-        // Form Submission
+        // Form Submission with WhatsApp Integration
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Thank you for your message! I will get back to you soon.');
+            
+            const name = this.querySelector('input[type="text"]').value;
+            const email = this.querySelector('input[type="email"]').value;
+            const subject = this.querySelectorAll('input[type="text"]')[1].value;
+            const message = this.querySelector('textarea').value;
+            
+            // Format the message for WhatsApp
+            const whatsappMessage = `New Contact Form Submission:%0A%0AName: ${name}%0AEmail: ${email}%0ASubject: ${subject}%0AMessage: ${message}`;
+            
+            // Create WhatsApp URL
+            const whatsappURL = `https://wa.me/918207825310?text=${whatsappMessage}`;
+            
+            // Open WhatsApp with the message
+            window.open(whatsappURL, '_blank');
+            
+            // Show confirmation
+            alert('Thank you for your message! You will be redirected to WhatsApp to send it.');
+            
+            // Reset form
             this.reset();
         });
         
@@ -685,7 +992,7 @@
                 const targetElement = document.querySelector(targetId);
                 if(targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 70,
+                        top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
                     });
                 }
@@ -696,11 +1003,49 @@
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
             if(window.scrollY > 100) {
-                header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
             } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
                 header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
             }
         });
+        
+        // Animate stats counter
+        function animateStats() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.textContent);
+                let count = 0;
+                const duration = 2000; // 2 seconds
+                const increment = target / (duration / 16); // 60fps
+                
+                const updateCount = () => {
+                    if (count < target) {
+                        count += increment;
+                        stat.textContent = Math.ceil(count) + '+';
+                        setTimeout(updateCount, 16);
+                    } else {
+                        stat.textContent = target + '+';
+                    }
+                };
+                
+                updateCount();
+            });
+        }
+        
+        // Initialize stats animation when in viewport
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(document.querySelector('.about-stats'));
     </script>
 </body>
-</html>
+    </html>
